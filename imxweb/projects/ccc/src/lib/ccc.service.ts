@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ClassloggerService } from 'qbm';
 import { ExtService } from 'qbm';
-
-import { CccComponent } from './ccc.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,11 @@ import { CccComponent } from './ccc.component';
 export class CccService {
 
   constructor(
-    private readonly extService: ExtService
+    private readonly extService: ExtService,
+    private logger: ClassloggerService,
   ) {  }
   
-  public onInit(): void{    
-	this.extService.register('Dashboard-SmallTiles', {instance: CccComponent})
+  public onInit(): void {
+    this.logger.info(this, 'CccService initialized');
   }
 }

@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { TileModule, ClassloggerService } from 'qbm';
 
-import { CccComponent } from './ccc.component';
 import { CccService } from './ccc.service';
-
 
 @NgModule({
   declarations: [
-    CccComponent
   ],
   imports: [
     TileModule
   ],
   exports: [
-    CccComponent
   ]
 })
 
