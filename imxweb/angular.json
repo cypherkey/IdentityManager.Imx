@@ -2049,6 +2049,40 @@
           }
         }
       }
+    },
+    "ccc": {
+      "projectType": "library",
+      "root": "projects/ccc",
+      "sourceRoot": "projects/ccc/src",
+      "prefix": "imx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ccc/ng-package.json",
+            "tsConfig": "projects/ccc/tsconfig.lib.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccc/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ccc/tsconfig.lib.json"
+            },
+            "dynamic": {
+              "project": "projects/ccc/ng-package.dynamic.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccc/src/test.ts",
+            "tsConfig": "projects/ccc/tsconfig.spec.json",
+            "karmaConfig": "projects/ccc/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "cli": {
