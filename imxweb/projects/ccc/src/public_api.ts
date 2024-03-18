@@ -6,6 +6,9 @@ export * from './lib/ccc.service';
 export * from './lib/ccc.module';
 
 /* 
+  Entries must be added here or the following error might appear:
+    Unsupported private class SomeComponent. This class is visible to consumers via SomeModule -> SomeComponent, but is not exported from the top-level library entrypoint.
+    REF: https://stackoverflow.com/questions/60121962/this-class-is-visible-to-consumers-via-somemodule-somecomponent-but-is-not-e
   New components created with following command:
     ng generate component hello-dashboard-tile --project=ccc --style=scss --export --prefix=ccc --skip-tests
     ng generate component goodbye-dashboard-tile --project=ccc --style=scss --export --prefix=ccc --skip-tests
