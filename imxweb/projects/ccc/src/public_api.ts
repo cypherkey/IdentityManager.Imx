@@ -12,3 +12,6 @@ export * from './lib/ccc.module';
 */
 export * from './lib/hello-dashboard-tile/hello-dashboard-tile.component'
 export * from './lib/goodbye-dashboard-tile/goodbye-dashboard-tile.component'
+
+// ng generate component hello-world-menuitem --project=ccc --style=scss --export --prefix=ccc --skip-tests
+export * from './lib/hello-world-menuitem/hello-world-menuitem.component'
