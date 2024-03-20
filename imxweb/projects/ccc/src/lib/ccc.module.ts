@@ -9,6 +9,7 @@ import { HelloDashboardTileComponent } from './hello-dashboard-tile/hello-dashbo
 import { GoodbyeDashboardTileComponent } from './goodbye-dashboard-tile/goodbye-dashboard-tile.component';
 import { HelloWorldMenuitemComponent } from './hello-world-menuitem/hello-world-menuitem.component';
 import { SampleIdentityModule } from './sample-identity/sample-identity.module';
+import { IconListModule } from './icon-list/icon-list.module';
 
 const routes: Routes = [
   {
@@ -29,9 +30,10 @@ const routes: Routes = [
     CommonModule,
     EuiCoreModule,
     EuiMaterialModule,
+    IconListModule,             // This will cause the constructor on this module to execute and register the menu items
     RouterModule,               // Required for CCCService to load HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent
     RouterModule.forChild(routes),
-    SampleIdentityModule,
+    SampleIdentityModule,       // This will cause the constructor on this module to execute and register the menu items
     TileModule                  // Required for HelloDashboardTileComponent and GoodbyeDashboardTileComponent
   ],
   exports: [

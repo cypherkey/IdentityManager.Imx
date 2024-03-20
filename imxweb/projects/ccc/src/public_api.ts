@@ -25,3 +25,8 @@ export { HelloWorldMenuitemComponent } from './lib/hello-world-menuitem/hello-wo
 export { SampleIdentityModule } from './lib/sample-identity/sample-identity.module'
 export { SampleIdentityDatatableComponent } from './lib/sample-identity/sample-identity-datatable/sample-identity-datatable.component'
 export { SampleIdentityDetailsComponent } from './lib/sample-identity/sample-identity-details/sample-identity-details.component'
+
+// ng generate module icon-list --project=ccc
+// ng generate component icon-list/icon-list-page --project=ccc --style=scss --export --prefix=ccc --skip-tests
+export { IconListModule } from './lib/icon-list/icon-list.module';
+export { IconListPageComponent } from './lib/icon-list/icon-list-page/icon-list-page.component';
