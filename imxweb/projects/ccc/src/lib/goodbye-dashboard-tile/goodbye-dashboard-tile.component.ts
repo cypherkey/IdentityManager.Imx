@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { imx_SessionService } from 'qbm';
+import { ClassloggerService, imx_SessionService } from 'qbm';
 import { RequestsService } from 'qer';
 
 @Component({
@@ -15,11 +15,14 @@ export class GoodbyeDashboardTileComponent implements OnInit {
 
   constructor(
     public requestsService: RequestsService,
-    public readonly sessionService: imx_SessionService
-  ) { }
+    public readonly sessionService: imx_SessionService,
+    private logger: ClassloggerService
+  ) { 
+    this.logger.info(this, 'GoodbyeDashboardTileComponent -> constructor');
+  }
 
   async ngOnInit(): Promise<void> {
-    console.log("GoodbyeDashboardTileComponent -> onInit")
+    this.logger.info(this, "GoodbyeDashboardTileComponent -> onInit");
     this.actionText = (await this.sessionService.getSessionState()).Username     
   }
 

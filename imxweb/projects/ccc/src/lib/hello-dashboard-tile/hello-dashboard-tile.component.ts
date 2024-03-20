@@ -22,7 +22,7 @@ export class HelloDashboardTileComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    console.log("HelloDashboardTileComponent -> onInit")   
+    this.logger.info(this, 'HelloDashboardTileComponent -> onInit');
     this.actionText = (await this.sessionService.getSessionState()).Username     
   }
 
