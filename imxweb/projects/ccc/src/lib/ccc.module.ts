@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EuiCoreModule, EuiMaterialModule } from '@elemental-ui/core';
-import { TileModule, ClassloggerService, RouteGuardService } from 'qbm';
+import { ClassloggerService, RouteGuardService, TileModule } from 'qbm';
 
 import { CccService } from './ccc.service';
 import { HelloDashboardTileComponent } from './hello-dashboard-tile/hello-dashboard-tile.component';
@@ -15,26 +15,26 @@ const routes: Routes = [
     component: HelloWorldMenuitemComponent,
     canActivate: [RouteGuardService],
     resolve: [RouteGuardService]
-  }
+  },
 ]
 @NgModule({
   declarations: [
     HelloDashboardTileComponent,
     GoodbyeDashboardTileComponent,
-    HelloWorldMenuitemComponent
+    HelloWorldMenuitemComponent,
   ],
   imports: [
     CommonModule,
     EuiCoreModule,
     EuiMaterialModule,
-    RouterModule,
+    RouterModule,               // Required for CCCService for HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent
     RouterModule.forChild(routes),
-    TileModule
+    TileModule                  // Required for HelloDashboardTileComponent and GoodbyeDashboardTileComponent
   ],
   exports: [
     HelloDashboardTileComponent,
     GoodbyeDashboardTileComponent,
-    HelloWorldMenuitemComponent
+    HelloWorldMenuitemComponent,
   ]
 })
 
@@ -44,8 +44,9 @@ export class CccModule {
     logger: ClassloggerService,
   ) {
     logger.info(this, '▶️ CCC loaded');
-    console.log('In constructor of CccModule.');
+
+    logger.info(this, 'CccModule -> constructor');
     this.initializer.onInit(routes);
-    console.log('CccModule initialized');
+    logger.info(this, 'CccModule initialized');
   }
 }

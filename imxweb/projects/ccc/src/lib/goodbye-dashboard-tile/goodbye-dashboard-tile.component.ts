@@ -19,7 +19,7 @@ export class GoodbyeDashboardTileComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    console.log("HelloDashboardTileComponent -> onInit")   
+    console.log("GoodbyeDashboardTileComponent -> onInit")
     this.actionText = (await this.sessionService.getSessionState()).Username     
   }
 

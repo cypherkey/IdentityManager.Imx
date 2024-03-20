@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassloggerService } from 'qbm';
 
 @Component({
   selector: 'imx-ccc',
@@ -11,10 +12,13 @@ export class HelloWorldMenuitemComponent implements OnInit {
   actionText: string = ""
   description: string = "Hello World"
 
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log("HelloWorldMenuitemComponent -> onInit")
+  constructor(
+    private logger: ClassloggerService
+  ) { 
+    this.logger.info(this, 'HelloWorldMenuitemComponent -> constructor');
   }
 
+  ngOnInit(): void {
+    this.logger.info(this, "HelloWorldMenuitemComponent -> onInit");
+  }
 }

@@ -16,11 +16,13 @@ export class CccService {
     private readonly menuService: MenuService,
     private logger: ClassloggerService,
   ) {
-
+    this.logger.info(this, 'CccService -> constructor');
     this.setupMenu();
   }
   
   public onInit(routes: Route[]): void {
+    this.logger.info(this, 'CccService -> onInit');
+
     // Register the two dashboard tiles
     this.extService.register('Dashboard-SmallTiles', {instance: HelloDashboardTileComponent})
     this.extService.register('Dashboard-SmallTiles', {instance: GoodbyeDashboardTileComponent})
@@ -40,18 +42,17 @@ export class CccService {
   }
 
   private setupMenu(): void {
+    this.logger.info(this,"Setup menus for HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent")
     this.menuService.addMenuFactories((preProps: string[], groups: string[]) => {
-    
-      this.logger.info(this,"Setup CCC menus")
-
+   
       // Create a main menu item called Custom and the first entry in that menu is Hello World
       const menu = {
-        title: '#LDS#Custom',
+        title: '#LDS#Sample',
         items: [
           {
             title: '#LDS#Hello World',
             route: 'helloworld'
-          }
+          },
         ]
       };
 

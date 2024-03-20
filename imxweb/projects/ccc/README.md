@@ -75,6 +75,15 @@ Additional fixes are required to support One Identity's dynamic modules
 
 ## Enable CCC module on API Server
 
+There are two options. The imxweb\Html_ccc\imx-plugin-config.json can be placed in the One Identity tools directory and loaded in to the database OR the file can be placed in the IIS INETPUB directory manually.
+
+Tools Directory
+    * Create {One Identity Tools Directory}\imxweb\Html_ccc
+    * Copy imx-plugin-config.json to \imxweb\Html_ccc
+    * Open SoftwareLoader.exe and select imx-plugin-config.json
+    * Select Web\Business API server as the deploy target 
+
+Manually
     * Create C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_ccc
     * Copy imx-plugin-config.json to C:\inetpub\wwwroot\ApiServer\bin\imxweb\Html_ccc
     * Recycle the API server application pool (not 100% sure this is required, but it doesn’t hurt)
