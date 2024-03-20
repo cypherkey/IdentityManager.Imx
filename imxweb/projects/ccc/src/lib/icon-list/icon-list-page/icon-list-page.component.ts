@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ccc-icon-list-page',
+  selector: 'imx-ccc',
   templateUrl: './icon-list-page.component.html',
   styleUrls: ['./icon-list-page.component.scss']
 })
