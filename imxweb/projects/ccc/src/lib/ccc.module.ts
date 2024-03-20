@@ -9,18 +9,11 @@ import { HelloDashboardTileComponent } from './hello-dashboard-tile/hello-dashbo
 import { GoodbyeDashboardTileComponent } from './goodbye-dashboard-tile/goodbye-dashboard-tile.component';
 import { HelloWorldMenuitemComponent } from './hello-world-menuitem/hello-world-menuitem.component';
 import { SampleIdentityModule } from './sample-identity/sample-identity.module';
-import { SampleIdentityDatatableComponent } from './sample-identity/sample-identity-datatable/sample-identity-datatable.component';
 
 const routes: Routes = [
   {
     path: 'helloworld',
     component: HelloWorldMenuitemComponent,
-    canActivate: [RouteGuardService],
-    resolve: [RouteGuardService]
-  },
-  {
-    path: 'sampleidentities',
-    component: SampleIdentityDatatableComponent,
     canActivate: [RouteGuardService],
     resolve: [RouteGuardService]
   },
@@ -38,6 +31,7 @@ const routes: Routes = [
     EuiMaterialModule,
     RouterModule,               // Required for CCCService to load HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent
     RouterModule.forChild(routes),
+    SampleIdentityModule,
     TileModule                  // Required for HelloDashboardTileComponent and GoodbyeDashboardTileComponent
   ],
   exports: [

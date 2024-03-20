@@ -42,20 +42,17 @@ export class CccService {
   }
 
   private setupMenu(): void {
-    this.logger.info(this,"Setup menus for HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent")
+    this.logger.info(this,"Setup menus for HelloWorldMenuitemComponent")
     this.menuService.addMenuFactories((preProps: string[], groups: string[]) => {
    
       // Create a main menu item called Custom and the first entry in that menu is Hello World
       const menu = {
+        id: 'ROOT_Sample',
         title: '#LDS#Sample',
         items: [
           {
             title: '#LDS#Hello World',
             route: 'helloworld'
-          },
-          {
-            title: '#LDS#Sample Identities',
-            route: 'sampleidentities'
           },
         ]
       };
