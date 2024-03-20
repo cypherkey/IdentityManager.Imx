@@ -24,9 +24,9 @@
         </ng-template>
     </imx-data-table-column>
     <imx-data-table-generic-column columnName="viewDetailsButton">
-        <ng-template>
-          <button mat-button color="primary">
-            {{ 'Details' }}
+        <ng-template let-item>
+          <button mat-button color="primary" (click)="onIdentitySelected(item)">
+            {{ '#LDS#Details' | translate }}
           </button>
         </ng-template>
       </imx-data-table-generic-column>

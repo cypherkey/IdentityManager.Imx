@@ -151,3 +151,7 @@ ng generate component hello-world-menuitem --project=ccc --style=scss --export -
         references the component that handles the dashboard tile
             this.extService.register('Dashboard-SmallTiles', {instance: HelloDashboardTileComponent})
             this.extService.register('Dashboard-SmallTiles', {instance: GoodbyeDashboardTileComponent})
+
+# Reference
+
+ElementalUI: https://elemental.dev.oneidentity.com/

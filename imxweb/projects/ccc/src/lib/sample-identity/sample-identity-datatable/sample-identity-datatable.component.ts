@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { OverlayRef } from '@angular/cdk/overlay';
+import { EuiLoadingService, EuiSidesheetService } from '@elemental-ui/core';
+import { PortalPersonAll, PortalPersonUid } from 'imx-api-qer';
 import { CollectionLoadParameters, DisplayColumns, EntitySchema, IClientProperty, ValType } from 'imx-qbm-dbts';
 import { ClassloggerService, DataSourceToolbarSettings } from 'qbm';
 import { QerApiService } from 'qer';
+import { SampleIdentityDetailsComponent } from '../sample-identity-details/sample-identity-details.component';
+
 
 /*
   Following exmaples from:
@@ -30,6 +35,8 @@ export class SampleIdentityDatatableComponent implements OnInit {
   constructor(
     private readonly qerApiClient: QerApiService,
     private logger: ClassloggerService,
+    private readonly busyService: EuiLoadingService,
+    private readonly sideSheet: EuiSidesheetService
   ) {
     this.logger.info(this, 'SampleIdentityDatatableComponent -> constructor');
 
@@ -46,6 +53,28 @@ export class SampleIdentityDatatableComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     await this.navigate();
+  }
+
+  public async onIdentitySelected(identity: PortalPersonAll): Promise<any> {
+    // API call can take time. Bring up a "busy indicator".
+    let overlay: OverlayRef = this.busyService.show();
+    let response: PortalPersonUid;
+
+    try {
+      response = ( await this.qerApiClient.typedClient.PortalPersonUid.Get(identity.GetEntity().GetKeys()[0]) ).Data[0];
+    } finally {
+      // API call is done. Hide the busy indicator.
+      this.busyService.hide(overlay);
+    }
+    
+    this.logger.info(this, 'Opening sidesheet');
+    this.sideSheet.open(SampleIdentityDetailsComponent, {
+      title: 'View Details',
+      headerColour: 'iris-blue',
+      padding: '0',
+      width: '600px',
+      data: response
+    })
   }
 
   public async onNavigationStateChanged(newState?: CollectionLoadParameters): Promise<void> {
