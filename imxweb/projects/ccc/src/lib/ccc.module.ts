@@ -8,6 +8,8 @@ import { CccService } from './ccc.service';
 import { HelloDashboardTileComponent } from './hello-dashboard-tile/hello-dashboard-tile.component';
 import { GoodbyeDashboardTileComponent } from './goodbye-dashboard-tile/goodbye-dashboard-tile.component';
 import { HelloWorldMenuitemComponent } from './hello-world-menuitem/hello-world-menuitem.component';
+import { SampleIdentityModule } from './sample-identity/sample-identity.module';
+import { SampleIdentityDatatableComponent } from './sample-identity/sample-identity-datatable/sample-identity-datatable.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,14 @@ const routes: Routes = [
     canActivate: [RouteGuardService],
     resolve: [RouteGuardService]
   },
+  {
+    path: 'sampleidentities',
+    component: SampleIdentityDatatableComponent,
+    canActivate: [RouteGuardService],
+    resolve: [RouteGuardService]
+  },
 ]
+
 @NgModule({
   declarations: [
     HelloDashboardTileComponent,
@@ -27,7 +36,7 @@ const routes: Routes = [
     CommonModule,
     EuiCoreModule,
     EuiMaterialModule,
-    RouterModule,               // Required for CCCService for HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent
+    RouterModule,               // Required for CCCService to load HelloWorldMenuitemComponent and SampleIdentitiesMenuitemComponent
     RouterModule.forChild(routes),
     TileModule                  // Required for HelloDashboardTileComponent and GoodbyeDashboardTileComponent
   ],

@@ -18,3 +18,8 @@ export * from './lib/goodbye-dashboard-tile/goodbye-dashboard-tile.component'
 
 // ng generate component hello-world-menuitem --project=ccc --style=scss --export --prefix=ccc --skip-tests
 export * from './lib/hello-world-menuitem/hello-world-menuitem.component'
+
+// ng generate module sample-identity --project=ccc
+// ng generate component sample-identity/sample-identity-table --project=ccc --style=scss --export --prefix=ccc --skip-tests
+export * from './lib/sample-identity/sample-identity.module'
+export * from './lib/sample-identity/sample-identity-datatable/sample-identity-datatable.component'

@@ -53,6 +53,10 @@ export class CccService {
             title: '#LDS#Hello World',
             route: 'helloworld'
           },
+          {
+            title: '#LDS#Sample Identities',
+            route: 'sampleidentities'
+          },
         ]
       };
 
