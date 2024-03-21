@@ -23,7 +23,10 @@ export class CccService {
   public onInit(routes: Route[]): void {
     this.logger.info(this, 'CccService -> onInit');
 
-    // Register the two dashboard tiles
+    // Register the two dashboard tiles. The dashboard is broken in to three sections:
+    // - Top : SmallTiles 
+    // - Middle : MediumTiles 
+    // - Top : LargeTiles 
     this.extService.register('Dashboard-SmallTiles', {instance: HelloDashboardTileComponent})
     this.extService.register('Dashboard-SmallTiles', {instance: GoodbyeDashboardTileComponent})
 

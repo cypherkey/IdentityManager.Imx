@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EuiCoreModule, EuiMaterialModule } from '@elemental-ui/core';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
 import { MatTabsModule } from '@angular/material/tabs'
 import { Route, RouterModule, Router, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { CdrModule, ClassloggerService, DataSourceToolbarModule, DataTableModule, MenuService, RouteGuardService } from 'qbm';
+import { CdrModule, ClassloggerService, DataSourceToolbarModule, DataTableModule, ExtService, MenuService, RouteGuardService } from 'qbm';
+import { TilesModule } from 'qer';
 import { SampleIdentityDatatableComponent } from './sample-identity-datatable/sample-identity-datatable.component';
 import { SampleIdentityDetailsComponent } from './sample-identity-details/sample-identity-details.component';
+import { SampleIdentityTileComponent } from './sample-identity-tile/sample-identity-tile.component';
 // OrgCharModule is not exported in qer's public_api.ts
 // import { OrgChartModule } from '../../../../qer/src/lib/org-chart/org-chart.module';
 
@@ -24,24 +27,29 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     SampleIdentityDatatableComponent,
-    SampleIdentityDetailsComponent
+    SampleIdentityDetailsComponent,
+    SampleIdentityTileComponent
   ],
   imports: [
     CdrModule,
     CommonModule,
     DataSourceToolbarModule,    // Required for SampleIdentitiesMenuitemComponent
     DataTableModule,            // Required for SampleIdentitiesMenuitemComponent
+    EuiCoreModule,
+    EuiMaterialModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
     MatTabsModule,
     RouterModule,
     RouterModule.forChild(routes),
+    TilesModule,
     TranslateModule,
   ],
   exports: [
     SampleIdentityDatatableComponent,
-    SampleIdentityDetailsComponent
+    SampleIdentityDetailsComponent,
+    SampleIdentityTileComponent
   ]
 })
 
@@ -49,12 +57,16 @@ export class SampleIdentityModule {
   // The constructor is called when this is imported in ccc.module.ts in the imports section of @NgModule
   constructor(
     private logger: ClassloggerService,
-    private readonly router: Router,
+    private readonly extService: ExtService,
     private readonly menuService: MenuService,
+    private readonly router: Router,
   ) {
     this.logger.info(this, 'SampleIdentityModule -> constructor');
     this.addRoutes(routes);
     this.setupMenu();
+
+    // Setup a icon tile in the middle/medium section to also go to the identities page
+    this.extService.register('Dashboard-MediumTiles', {instance: SampleIdentityTileComponent})
   }
 
   private addRoutes(routes: Route[]): void {

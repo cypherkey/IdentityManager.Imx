@@ -1,0 +1,8 @@
+<imx-icon-tile [caption]="caption" image="user" [subtitle]="description">
+  <ng-template #ActionTemplate>
+    <button mat-button color="primary" (click)="GoToIdentities()">
+      <span>{{ '#LDS#View' | translate }}</span>
+      <eui-icon size="m" image="forward"></eui-icon>
+    </button>
+  </ng-template>
+</imx-icon-tile>

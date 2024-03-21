@@ -22,9 +22,11 @@ export { HelloWorldMenuitemComponent } from './lib/hello-world-menuitem/hello-wo
 // ng generate module sample-identity --project=ccc
 // ng generate component sample-identity/sample-identity-datatable --project=ccc --style=scss --export --prefix=ccc --skip-tests
 // ng generate component sample-identity/sample-identity-details --project=ccc --style=scss --export --prefix=ccc --skip-tests
+// ng generate component sample-identity/sample-identity-tile --project=ccc --style=scss --export --prefix=ccc --skip-tests
 export { SampleIdentityModule } from './lib/sample-identity/sample-identity.module'
 export { SampleIdentityDatatableComponent } from './lib/sample-identity/sample-identity-datatable/sample-identity-datatable.component'
 export { SampleIdentityDetailsComponent } from './lib/sample-identity/sample-identity-details/sample-identity-details.component'
+export { SampleIdentityTileComponent } from './lib/sample-identity/sample-identity-tile/sample-identity-tile.component';
 
 // ng generate module icon-list --project=ccc
 // ng generate component icon-list/icon-list-page --project=ccc --style=scss --export --prefix=ccc --skip-tests
